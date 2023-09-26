@@ -25,18 +25,18 @@
                     <!-- name -->
                     <div class="name">
                         <label for="name">Name</label>
-                        <input id="name" type="text" placeholder="Your name" />
+                        <input id="name" type="text" placeholder="Your name" name="name"/>
                         @error('name')
-                        <div class="alert alert-danger fs-6 text">{{$message}}</div>
+                        <div class="alert alert-danger fs-6 text">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <!-- email -->
                     <div class="email">
                         <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="Your email" />
+                        <input id="email" type="email" placeholder="Your email" name="email"/>
                         @error('email')
-                        <div class="alert alert-danger fs-6 text">{{$message}}</div>
+                        <div class="alert alert-danger fs-6 text">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -45,9 +45,9 @@
                     <!-- nik -->
                     <div class="nik">
                         <label for="nik">NIK</label>
-                        <input id="nik" type="text" placeholder="Your NIK" />
+                        <input id="nik" type="text" placeholder="Your NIK" name="nik"/>
                         @error('nik')
-                        <div class="alert alert-danger fs-6 text">{{$message}}</div>
+                        <div class="alert alert-danger fs-6 text">{{ $message }}</div>
                         @enderror    
                     </div>   
                     
@@ -80,10 +80,10 @@
 
                     
                 <div class="set">
-                    <div class="nominal">
-                        <label for="nominal">Nominal</label>
-                        <input id="nominal" type="text" inputmode="decimal" id="float-input" name="float-input" pattern="[0-9]*[.,]?[0-9]*" placeholder="Payment Nominal">
-                        @error('nominal')
+                    <div class="amount">
+                        <label for="amount">Amount</label>
+                        <input type="text" id="amount" placeholder="Payment amount" name="amount">
+                        @error('amount')
                         <div class="alert alert-danger fs-6 text">{{ $message }}</div>
                         @enderror
                     </div>
@@ -92,18 +92,21 @@
                     <!-- payment date -->
                     <div class="paymentDate">
                         <label for="paymentDate">Payment Date</label>
-                        <input id="paymentDate" type="date" placeholder="MM/DD/YYYY" />
+                        <input id="paymentDate" type="date" placeholder="MM/DD/YYYY" name="paymentDate"/>
+                        @error('paymentDate')
+                        <div class="alert alert-danger fs-6 text">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
                 <!-- proof image -->
-                <div class="paymentProof">
-                    <label for="paymentProff">Payment Proof</label>
+                <div class="image">
+                    <label for="image">Payment Proof</label>
                     <form action="/action_page.php">
-                        <input type="file" id="upload" name="upload">
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
                     </form>
-                    @error('nominal')
-                    <div class="alert alert-danger fs-6 text">{{$message}}/div>
+                    @error('image')
+                    <div class="alert alert-danger fs-6 text">{{ $message }}/div>
                     @enderror 
                 </div>
                 
