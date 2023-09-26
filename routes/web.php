@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/form', function () {
-    return view('form');
-});
+
+Route::get('/form', [FormController::class, 'index']);
+
 Route::post('/form', [FormController::class, 'validator']);
 
 Route::get('/result', [FormController::class, 'result']);
