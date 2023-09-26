@@ -15,21 +15,21 @@ class FormController extends Controller{
         $request->validate([
             'name' => 'required|regex:/^[A-Za-z\s]+$/',
             'email' => 'required|email:rfc',
-            'nik' => 'required|regex:/^[A-Za-z\s]+$/',
+            'nik' => 'required|numeric',
             'paymentDate' => 'required',
-            'nominal' => 'required|numeric|between:2.50,99.99',
-            'upload' => 'required|max:2048|mimes:jpg,jpeg,png',
+            'amount' => 'required|numeric|between:2.50,99.99',
+            'image' => 'required|max:2048|mimes:jpg,jpeg,png',
         ]);
         
-        $request->upload->storeAs('public/images', $request->pict->getClientOriginalName());
+        $request->image->storeAs('public/images', $request->image->getClientOriginalName());
         
         $results = [
             'name' => $request->name,
             'email' => $request->email,
             'nik' => $request->nik,
             'paymentDate' => $request->input('paymentDate'),
-            'nominal' => $request->nominal,
-            'upload' => $request->pict->getClientOriginalName(),            
+            'amount' => $request->amount,
+            'image' => $request->image->getClientOriginalName(),            
         ];
         
         return redirect('/result')->with(['results' => $results, 'status' => 'Form successfully submitted!']);
